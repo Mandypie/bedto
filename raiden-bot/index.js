@@ -1,14 +1,14 @@
 /* 𝗕𝗔𝗦𝗘 𝗕𝗬 𝗖𝗥𝗬𝗣𝗧𝗢 𝗟𝗢𝗥𝗗 𝗛𝗜𝗠𝗦𝗘𝗟𝗙*/
 //========Ambassador========
 require('./system/config');
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, makeInMemoryStore, jidDecode, proto } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, jidDecode, proto } = require("@whiskeysockets/baileys");
 const pino = require('pino');
 const { Boom } = require('@hapi/boom');
 const chalk = require('chalk')
 const readline = require("readline")
 const { smsg, fetchJson, await, sleep } = require('./system/lib/myfunction');
 //======================
-const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
+const store = { contacts: {} };
 const usePairingCode = true
 const question = (text) => {
 const rl = readline.createInterface({
